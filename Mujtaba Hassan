@@ -1,0 +1,56 @@
+in this assignment our aim is to use two functions "makeCacheMatrix" and "cacheSolve" which are used to commpute inverse of a matrix in order to save time wjile working with large set of data
+lets see the details of the functions 
+> getwd()
+[1] "C:/Users/Mujtaba/Desktop/R-programming course/week 3"
+first we will write function for "makeCacheMatrix"
+> makeCacheMatrix <- function(x = matrix()) {
++     i <- NULL
++   set <- function(y) {
++           x <<- y
++           i <<- NULL
++   }
++ get <- function() x
++   setinverse <- function(inverse) i <<- inverse
++   getinverse <- function() i
++   list(set = set,
++        get = get,
++        setinverse = setinverse,
++        getinverse = getinverse)
++ }
+we have set our special matrix now we wil write function for "cacheSolve" which will calculate the inverse of special matric from makeCacheMatrix. the cache matrix will retrieve the
+inverse from the cache once calculated if the matrix remains same 
+now we will do some practice excersize 
+> mujtaba<-matrix(c(1:4),2,2)
+> m1<- makeCacheMatrix(mujtaba)
+> m1$get()
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+> m1$getinv()
+NULL
+here the inverse is null because we havent yet applied the cachesolve function lets try the cache solve function and then apply the reverse of matrix
+> cacheSolve(m1)
+ [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+> m1$getinv()
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+ mujtaba3<-matrix(c(3, 1, 2, 4),2,2)
+> m3<- makeCacheMatrix(mujtaba3)
+> m3$get()
+     [,1] [,2]
+[1,]    3    2
+[2,]    1    4
+> m3$getinv()
+NULL
+> cacheSolve(m3)
+     [,1] [,2]
+[1,]  0.4 -0.2
+[2,] -0.1  0.3
+> m3$getinv()
+     [,1] [,2]
+[1,]  0.4 -0.2
+[2,] -0.1  0.3
+
