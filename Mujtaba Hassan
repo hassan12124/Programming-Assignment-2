@@ -53,4 +53,18 @@ NULL
      [,1] [,2]
 [1,]  0.4 -0.2
 [2,] -0.1  0.3
-
+could some tell about the error i am facing in matrix more then 2*2 matrix 
+> mujtaba3<-matrix(c(1:16),4,4)
+> m3<- makeCacheMatrix(mujtaba3)
+> m3$get()
+     [,1] [,2] [,3] [,4]
+[1,]    1    5    9   13
+[2,]    2    6   10   14
+[3,]    3    7   11   15
+[4,]    4    8   12   16
+> m3$getinv()
+NULL
+> cacheSolve(m3)
+Error in solve.default(data, ....) : 
+  Lapack routine dgesv: system is exactly singular: U[3,3] = 0
+what does this error mean and how to write function for more then 2/2 matrix
